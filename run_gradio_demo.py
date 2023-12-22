@@ -265,7 +265,7 @@ with gr.Blocks() as demo:
             #     seed = gr.Slider(label="Seed", minimum=-1, maximum=999999999, step=1, value=-1)
             #     gr.Markdown(" Higher guidance-scale makes higher fidelity, while lower guidance-scale leads to more harmonized blending.")
 
-        num_samples = gr.State(1)
+        num_samples = gr.State(3)
         strength = gr.State(1.0)
         ddim_steps = gr.State(30)
         scale = gr.State(3.0)
@@ -279,7 +279,7 @@ with gr.Blocks() as demo:
         with gr.Row():
             base = gr.Image(label="Background", source="upload", tool="sketch", type="pil", height=512, brush_color='#FFFFFF', mask_opacity=0.5)
             ref = gr.Image(label="Reference", source="upload", tool="sketch", type="pil", height=512, brush_color='#FFFFFF', mask_opacity=0.5)
-            baseline_gallery = gr.Gallery(label='Output', show_label=True, elem_id="gallery", columns=1, height=768)
+            baseline_gallery = gr.Gallery(label='Output', show_label=True, elem_id="gallery", columns=1, height=512)
         run_local_button = gr.Button(label="Generate", value="Run")
 
         with gr.Row():
