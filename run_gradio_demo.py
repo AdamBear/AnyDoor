@@ -255,15 +255,15 @@ def run_local(base,
 with gr.Blocks() as demo:
     with gr.Column():
         gr.Markdown("#  Play with AnyDoor to Teleport your Target Objects! ")
-        with gr.Row():
-            baseline_gallery = gr.Gallery(label='Output', show_label=True, elem_id="gallery", columns=1, height=768)
-            with gr.Accordion("Advanced Option", open=True):
-                num_samples = gr.Slider(label="Images", minimum=1, maximum=12, value=1, step=1)
-                strength = gr.Slider(label="Control Strength", minimum=0.0, maximum=2.0, value=1.0, step=0.01)
-                ddim_steps = gr.Slider(label="Steps", minimum=1, maximum=100, value=30, step=1)
-                scale = gr.Slider(label="Guidance Scale", minimum=0.1, maximum=30.0, value=3.0, step=0.1)
-                seed = gr.Slider(label="Seed", minimum=-1, maximum=999999999, step=1, value=-1)
-                gr.Markdown(" Higher guidance-scale makes higher fidelity, while lower guidance-scale leads to more harmonized blending.")
+        #with gr.Row():
+            #baseline_gallery = gr.Gallery(label='Output', show_label=True, elem_id="gallery", columns=1, height=768)
+            # with gr.Accordion("Advanced Option", open=True):
+            #     num_samples = gr.Slider(label="Images", minimum=1, maximum=12, value=1, step=1)
+            #     strength = gr.Slider(label="Control Strength", minimum=0.0, maximum=2.0, value=1.0, step=0.01)
+            #     ddim_steps = gr.Slider(label="Steps", minimum=1, maximum=100, value=30, step=1)
+            #     scale = gr.Slider(label="Guidance Scale", minimum=0.1, maximum=30.0, value=3.0, step=0.1)
+            #     seed = gr.Slider(label="Seed", minimum=-1, maximum=999999999, step=1, value=-1)
+            #     gr.Markdown(" Higher guidance-scale makes higher fidelity, while lower guidance-scale leads to more harmonized blending.")
     
         gr.Markdown("# Upload / Select Images for the Background (left) and Reference Object (right)")
         gr.Markdown("### Your could draw coarse masks on the background to indicate the desired location and shape.")
@@ -271,6 +271,7 @@ with gr.Blocks() as demo:
         with gr.Row():
             base = gr.Image(label="Background", source="upload", tool="sketch", type="pil", height=512, brush_color='#FFFFFF', mask_opacity=0.5)
             ref = gr.Image(label="Reference", source="upload", tool="sketch", type="pil", height=512, brush_color='#FFFFFF', mask_opacity=0.5)
+            baseline_gallery = gr.Gallery(label='Output', show_label=True, elem_id="gallery", columns=1, height=768)
         run_local_button = gr.Button(label="Generate", value="Run")
 
         with gr.Row():
