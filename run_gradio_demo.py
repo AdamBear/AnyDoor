@@ -264,7 +264,15 @@ with gr.Blocks() as demo:
             #     scale = gr.Slider(label="Guidance Scale", minimum=0.1, maximum=30.0, value=3.0, step=0.1)
             #     seed = gr.Slider(label="Seed", minimum=-1, maximum=999999999, step=1, value=-1)
             #     gr.Markdown(" Higher guidance-scale makes higher fidelity, while lower guidance-scale leads to more harmonized blending.")
-    
+
+        num_samples = gr.State(1)
+        strength = gr.State(1.0)
+        ddim_steps = gr.State(30)
+        scale = gr.State(3.0)
+        seed = gr.State(-1)
+
+        gr.Markdown(" Higher guidance-scale makes higher fidelity, while lower guidance-scale leads to more harmonized blending.")
+
         gr.Markdown("# Upload / Select Images for the Background (left) and Reference Object (right)")
         gr.Markdown("### Your could draw coarse masks on the background to indicate the desired location and shape.")
         gr.Markdown("### <u>Do not forget</u> to annotate the target object on the reference image.")
