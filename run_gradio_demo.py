@@ -273,19 +273,19 @@ with gr.Blocks() as demo:
 
         #gr.Markdown(" Higher guidance-scale makes higher fidelity, while lower guidance-scale leads to more harmonized blending.")
 
-        gr.Markdown("## 在左边上传或选择一张背景图片，在中间上传或选择一张包含需要传送物体的参考图片")
-        gr.Markdown("## 在左边背景图上用画笔图一下需要传送到的目标区域，在中间的参考图片上面图一下你需要传送的物品")
+        gr.Markdown("### 在左边上传或选择一张背景图片，在中间上传或选择一张包含需要传送对象的参考图片")
+        gr.Markdown("### 在左边背景图上用画笔图一下需要传送到的目标区域，在中间的参考图片上面图一下你需要传送的物品")
         with gr.Row():
-            base = gr.Image(label="Background", source="upload", tool="sketch", type="pil", height=512, brush_color='#FFFFFF', mask_opacity=0.5)
-            ref = gr.Image(label="Reference", source="upload", tool="sketch", type="pil", height=512, brush_color='#FFFFFF', mask_opacity=0.5)
-            baseline_gallery = gr.Gallery(label='Output', show_label=True, elem_id="gallery", columns=1, height=512)
-        run_local_button = gr.Button(label="Generate", value="Run")
+            base = gr.Image(label="背景图", source="upload", tool="sketch", type="pil", height=512, brush_color='#FFFFFF', mask_opacity=0.3)
+            ref = gr.Image(label="参考图", source="upload", tool="sketch", type="pil", height=512, brush_color='#FFFFFF', mask_opacity=0.3)
+            baseline_gallery = gr.Image(label='传送结果', show_label=True, elem_id="gallery", interactive=False, height=512)
+        run_local_button = gr.Button(label="传送", value="Run")
 
         with gr.Row():
             with gr.Column():
-                gr.Examples(image_list, inputs=[base],label="Examples - Background Image",examples_per_page=16)
+                gr.Examples(image_list, inputs=[base],label="示例 - 背景图片", examples_per_page=24)
             with gr.Column():
-                gr.Examples(ref_list, inputs=[ref],label="Examples - Reference Object",examples_per_page=16)
+                gr.Examples(ref_list, inputs=[ref],label="示例 - 对象参考图片", examples_per_page=24)
         
     run_local_button.click(fn=run_local, 
                            inputs=[base, 
