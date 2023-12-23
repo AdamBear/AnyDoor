@@ -250,7 +250,7 @@ def run_local(base,
     synthesis = synthesis.permute(1, 2, 0).numpy()
 
     masked_ref = cv2.resize(masked_ref.astype(np.uint8), (512,512))
-    return [synthesis]
+    return synthesis
 
 with gr.Blocks() as demo:
     with gr.Column():
@@ -276,8 +276,8 @@ with gr.Blocks() as demo:
         gr.Markdown("### 在左边上传或选择一张背景图片，在中间上传或选择一张包含需要传送对象的参考图片")
         gr.Markdown("### 在左边背景图上用画笔图一下需要传送到的目标区域，在中间的参考图片上面图一下你需要传送的物品")
         with gr.Row():
-            base = gr.Image(label="背景图", source="upload", tool="sketch", type="pil", height=512, brush_color='#FFFFFF', mask_opacity=0.3)
-            ref = gr.Image(label="参考图", source="upload", tool="sketch", type="pil", height=512, brush_color='#FFFFFF', mask_opacity=0.3)
+            base = gr.Image(label="背景图", source="upload", tool="sketch", type="pil", height=512, brush_radius=64, brush_color='#FFFFFF', mask_opacity=0.7)
+            ref = gr.Image(label="参考图", source="upload", tool="sketch", type="pil", height=512, brush_radius=64, brush_color='#FFFFFF', mask_opacity=0.7)
             baseline_gallery = gr.Image(label='传送结果', show_label=True, elem_id="gallery", interactive=False, height=512)
         run_local_button = gr.Button(label="传送", value="Run")
 
@@ -296,7 +296,7 @@ with gr.Blocks() as demo:
                                    scale, 
                                    seed, 
                                    ], 
-                           outputs=[baseline_gallery]
+                           outputs=baseline_gallery
                         )
 
 demo.launch(server_name="0.0.0.0", server_port=6006)
