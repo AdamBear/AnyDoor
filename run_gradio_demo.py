@@ -254,7 +254,7 @@ def run_local(base,
 
 with gr.Blocks() as demo:
     with gr.Column():
-        gr.Markdown("#  Play with AnyDoor to Teleport your Target Objects! ")
+        gr.Markdown("#  沃奇传送门技术演示 ")
         #with gr.Row():
             #baseline_gallery = gr.Gallery(label='Output', show_label=True, elem_id="gallery", columns=1, height=768)
             # with gr.Accordion("Advanced Option", open=True):
@@ -271,11 +271,10 @@ with gr.Blocks() as demo:
         scale = gr.State(3.0)
         seed = gr.State(-1)
 
-        gr.Markdown(" Higher guidance-scale makes higher fidelity, while lower guidance-scale leads to more harmonized blending.")
+        #gr.Markdown(" Higher guidance-scale makes higher fidelity, while lower guidance-scale leads to more harmonized blending.")
 
-        gr.Markdown("# Upload / Select Images for the Background (left) and Reference Object (right)")
-        gr.Markdown("### Your could draw coarse masks on the background to indicate the desired location and shape.")
-        gr.Markdown("### <u>Do not forget</u> to annotate the target object on the reference image.")
+        gr.Markdown("# 在左边上传或选择一张背景图片，在中间上传一张包含需要传送物体的图片")
+        gr.Markdown("### 在左边用画笔图一下需要传送到的目标区域，在右边图一下需要传送的物品")
         with gr.Row():
             base = gr.Image(label="Background", source="upload", tool="sketch", type="pil", height=512, brush_color='#FFFFFF', mask_opacity=0.5)
             ref = gr.Image(label="Reference", source="upload", tool="sketch", type="pil", height=512, brush_color='#FFFFFF', mask_opacity=0.5)
