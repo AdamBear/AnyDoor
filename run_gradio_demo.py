@@ -254,7 +254,7 @@ def run_local(base,
 
 with gr.Blocks() as demo:
     with gr.Column():
-        gr.Markdown("#  沃奇传送门技术演示 ")
+        gr.Markdown("<h1><center>沃奇AI 传送门技术演示</center></h1>")
         #with gr.Row():
             #baseline_gallery = gr.Gallery(label='Output', show_label=True, elem_id="gallery", columns=1, height=768)
             # with gr.Accordion("Advanced Option", open=True):
